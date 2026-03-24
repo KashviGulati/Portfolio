@@ -139,18 +139,27 @@ function Blob() {
       }}
     >
       <motion.div
-        animate={{ y: [0, -14, 0], rotate: [0, 3, -3, 0] }}
-        transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+      animate={{ y: [0, -14, 0], rotate: [0, 3, -3, 0] }}
+      transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+      style={{
+        width: 210, height: 210, borderRadius: '50%',
+        overflow: 'hidden',
+        border: '3px solid #fff',
+        boxShadow: '0 8px 32px rgba(141,207,200,0.3)',
+      }}
+    >
+      <img
+        src="/photo.png"
+        alt="Kashvi Gulati"
         style={{
-          width: 210, height: 210, borderRadius: '50%',
-          background: 'var(--mint)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          fontFamily: "'DM Serif Display', serif",
-          fontSize: 54, color: '#fff', letterSpacing: 2,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          objectPosition: 'center top',
         }}
-      >
-        KG
-      </motion.div>
+      />
+    </motion.div>
+
     </motion.div>
   )
 }
