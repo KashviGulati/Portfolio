@@ -1,13 +1,14 @@
-import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useEffect, useRef } from 'react'
 import { Reveal } from './Animations'
+import { Brain, Globe, Cpu, Network, Trophy } from 'lucide-react'
 
 const certificates = [
   {
     title: 'Advanced Data Science & Generative AI',
     issuer: 'AlgoTutor Academy',
     date: 'Aug 2025',
-    icon: '🤖',
+    Icon: Brain,
     colorHex: '#F4858A',
     colorPale: '#FDE8E8',
     skills: ['Generative AI', 'Deep Learning', 'Data Science', 'LLMs', 'Neural Networks'],
@@ -18,7 +19,7 @@ const certificates = [
     title: 'The Bits and Bytes of Computer Networking',
     issuer: 'Google',
     date: 'Sep 2024',
-    icon: '🌐',
+    Icon: Globe,
     colorHex: '#8DCFC8',
     colorPale: '#E0F5F2',
     skills: ['Networking', 'TCP/IP', 'DNS', 'Protocols', 'Network Security'],
@@ -29,7 +30,7 @@ const certificates = [
     title: 'Computational Theory: Language Principle & Finite Automata',
     issuer: 'Infosys Springboard',
     date: 'Aug 22, 2025',
-    icon: '⚙️',
+    Icon: Cpu,
     colorHex: '#8DCFC8',
     colorPale: '#E0F5F2',
     skills: ['Computational Theory', 'Finite Automata', 'Language Principles', 'Theory of Computation'],
@@ -40,7 +41,7 @@ const certificates = [
     title: 'Peer-to-Peer Protocols and Local Area Networks',
     issuer: 'University of Colorado / Coursera',
     date: 'Oct 11, 2024',
-    icon: '🔗',
+    Icon: Network,
     colorHex: '#F4858A',
     colorPale: '#FDE8E8',
     skills: ['P2P Protocols', 'LAN', 'Network Architecture', 'Coursera'],
@@ -51,7 +52,7 @@ const certificates = [
     title: 'HackVerse 2024 — Certificate of Participation',
     issuer: 'OASIS / Linux Socials, LPU',
     date: 'Mar 28–29, 2024',
-    icon: '🏆',
+    Icon: Trophy,
     colorHex: '#F9AEAE',
     colorPale: '#FDE8E8',
     skills: ['Hackathon', 'Problem Solving', 'Coding', '24hr Challenge'],
@@ -121,6 +122,7 @@ export default function Certificates() {
             {certificates.map((cert, i) => {
               const isHovered = hovered === i
               const isActive  = active === i
+              const { Icon } = cert
 
               return (
                 <motion.div
@@ -196,10 +198,14 @@ export default function Certificates() {
                       style={{
                         width: 44, height: 44, borderRadius: 12,
                         display: 'flex', alignItems: 'center',
-                        justifyContent: 'center', fontSize: 20, flexShrink: 0,
+                        justifyContent: 'center', flexShrink: 0,
                       }}
                     >
-                      {cert.icon}
+                      <Icon
+                        size={20}
+                        color={isHovered ? '#fff' : cert.colorHex}
+                        strokeWidth={1.75}
+                      />
                     </motion.div>
 
                     {/* Title + issuer */}
@@ -325,6 +331,7 @@ export default function Certificates() {
           >
             {(() => {
               const cert = certificates[active]
+              const { Icon } = cert
               return (
                 <motion.div
                   initial={{ scale: 0.75, opacity: 0, y: 80, rotateX: -12 }}
@@ -396,12 +403,12 @@ export default function Certificates() {
                         transition={{ duration: 0.6, delay: 0.4, type: 'spring', stiffness: 200 }}
                         style={{
                           width: 54, height: 54, borderRadius: 15,
-                          background: cert.colorPale, fontSize: 26,
+                          background: cert.colorPale,
                           display: 'flex', alignItems: 'center', justifyContent: 'center',
                           boxShadow: `0 4px 20px ${cert.colorHex}30`,
                         }}
                       >
-                        {cert.icon}
+                        <Icon size={26} color={cert.colorHex} strokeWidth={1.6} />
                       </motion.div>
                       <div>
                         <motion.div

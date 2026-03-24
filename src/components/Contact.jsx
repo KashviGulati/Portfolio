@@ -15,7 +15,7 @@ function useInViewOnce(ref) {
 }
 
 const links = [
-  { label: '✉ Email me', href: 'mailto:kashvigulati42@gmail.com', primary: true, detail: 'kashvigulati42@gmail.com' },
+  { label: 'Email me', href: 'mailto:kashvigulati42@gmail.com', primary: false, detail: 'kashvigulati42@gmail.com' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/kashvi-gulati/', primary: false, detail: 'linkedin.com/in/kashvi-gulati' },
   { label: 'GitHub', href: 'https://github.com/KashviGulati', primary: false, detail: 'github.com/KashviGulati' },
 ]
@@ -139,7 +139,7 @@ export default function Contact() {
           transition={{ duration: 0.5, delay: 0.9 }}
           style={{ fontSize: 12, color: 'rgba(255,255,255,0.45)' }}
         >
-          +91 8307533390
+          
         </motion.p>
 
       </div>

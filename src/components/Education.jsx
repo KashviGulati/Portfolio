@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { Reveal, Stagger, StaggerItem } from './Animations'
+import { Brain, Globe, Cloud, Medal } from 'lucide-react'
 
 const edu = [
   { deg:'B.Tech — Computer Science & Engineering', school:'Lovely Professional University, Phagwara', detail:'Aug 2023 – Present · CGPA 8.29' },
@@ -8,10 +9,10 @@ const edu = [
 ]
 
 const ach = [
-  { icon:'📜', title:'Advanced Data Science & Generative AI', sub:'AlgoTutor Academy · Aug 2025' },
-  { icon:'🌐', title:'Bits and Bytes of Computer Networking',  sub:'Google · Sep 2024' },
-  { icon:'☁️', title:'Google Cloud Agentic AI Day — Finalist', sub:'Hackathon · Bangalore · Jul 2025' },
-  { icon:'🥈', title:'2nd Place — Group Discussion Competition', sub:'Centre for Professional Enhancement · Dec 2025' },
+  { Icon: Brain,  title:'Advanced Data Science & Generative AI', sub:'AlgoTutor Academy · Aug 2025' },
+  { Icon: Globe,  title:'Bits and Bytes of Computer Networking',  sub:'Google · Sep 2024' },
+  { Icon: Cloud,  title:'Google Cloud Agentic AI Day — Finalist', sub:'Hackathon · Bangalore · Jul 2025' },
+  { Icon: Medal,  title:'2nd Place — Group Discussion Competition', sub:'Centre for Professional Enhancement · Dec 2025' },
 ]
 
 export default function Education() {
@@ -44,13 +45,15 @@ export default function Education() {
 
         <Stagger staggerDelay={0.1}>
           <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'1rem' }}>
-            {ach.map(({ icon, title, sub }) => (
+            {ach.map(({ Icon, title, sub }) => (
               <StaggerItem key={title}>
                 <motion.div className="hoverable"
                   whileHover={{ y:-3, borderColor:'var(--blush)' }} transition={{ duration:0.2 }}
                   style={{ background:'#fff', border:'0.5px solid var(--border)', borderRadius:14, padding:'1.2rem 1.4rem', display:'flex', gap:'1rem', alignItems:'flex-start' }}
                 >
-                  <div style={{ width:38, height:38, borderRadius:10, background:'var(--blush-pale)', display:'flex', alignItems:'center', justifyContent:'center', fontSize:17, flexShrink:0 }}>{icon}</div>
+                  <div style={{ width:38, height:38, borderRadius:10, background:'var(--blush-pale)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
+                    <Icon size={18} color="var(--coral)" strokeWidth={1.75} />
+                  </div>
                   <div>
                     <div style={{ fontSize:13, fontWeight:500, color:'var(--text-dark)', marginBottom:3 }}>{title}</div>
                     <div style={{ fontSize:12, color:'var(--text-light)' }}>{sub}</div>

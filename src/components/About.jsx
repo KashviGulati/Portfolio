@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
+import { GraduationCap, Trophy, Briefcase, Brain } from 'lucide-react'
 
 function useInViewOnce(ref, threshold = 0.15) {
   const [visible, setVisible] = useState(false)
@@ -15,10 +16,10 @@ function useInViewOnce(ref, threshold = 0.15) {
 }
 
 const cards = [
-  { icon: '🎓', title: 'B.Tech Computer Science & Engineering', sub: 'Lovely Professional University · CGPA 8.29' },
-  { icon: '🏆', title: 'Google Cloud Agentic AI Day — Finalist', sub: 'Hackathon · Bangalore · Jul 2025' },
-  { icon: '💼', title: 'Full Stack Developer Intern', sub: 'NetPy Technologies · Jun–Sep 2025' },
-  { icon: '🤖', title: 'Advanced Data Science & Generative AI', sub: 'Certified · AlgoTutor Academy · Aug 2025' },
+  { icon: <GraduationCap size={18} />, title: 'B.Tech Computer Science & Engineering', sub: 'Lovely Professional University · CGPA 8.29' },
+  { icon: <Trophy size={18} />, title: 'Google Cloud Agentic AI Day — Finalist', sub: 'Hackathon · Bangalore · Jul 2025' },
+  { icon: <Briefcase size={18} />, title: 'Full Stack Developer Intern', sub: 'NetPy Technologies · Jun–Sep 2025' },
+  { icon: <Brain size={18} />, title: 'Advanced Data Science & Generative AI', sub: 'Certified · AlgoTutor Academy · Aug 2025' },
 ]
 
 const lines = [
@@ -37,9 +38,7 @@ export default function About() {
       <div style={{ padding: '5.5rem 3.5rem' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '5rem', alignItems: 'start' }}>
 
-          {/* Left — text reveals line by line */}
           <div>
-            {/* Label flips in */}
             <motion.p
               initial={{ rotateX: -90, opacity: 0 }}
               animate={inView ? { rotateX: 0, opacity: 1 } : {}}
@@ -49,7 +48,6 @@ export default function About() {
               About me
             </motion.p>
 
-            {/* Title — each word drops from above */}
             <h2 style={{ fontFamily: "'DM Serif Display', serif", fontSize: 40, color: 'var(--text-dark)', marginBottom: '2rem', lineHeight: 1.15, overflow: 'hidden' }}>
               {['Turning', 'ideas', 'into'].map((word, i) => (
                 <motion.span key={word}
@@ -74,7 +72,6 @@ export default function About() {
               ))}
             </h2>
 
-            {/* Paragraph lines slide in from left one by one */}
             {lines.map((line, i) => (
               <motion.div
                 key={i}
@@ -94,7 +91,6 @@ export default function About() {
             ))}
           </div>
 
-          {/* Right — cards fly in from right with stagger */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             {cards.map(({ icon, title, sub }, i) => (
               <motion.div key={title}
@@ -108,35 +104,18 @@ export default function About() {
                   initial={{ rotate: -20, scale: 0 }}
                   animate={inView ? { rotate: 0, scale: 1 } : {}}
                   transition={{ duration: 0.5, delay: 0.3 + i * 0.12, type: 'spring', stiffness: 260 }}
-                  style={{ width: 38, height: 38, borderRadius: 10, background: 'var(--mint-pale)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 17, flexShrink: 0 }}
+                  style={{ width: 38, height: 38, borderRadius: 10, background: 'var(--mint-pale)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}
                 >
                   {icon}
                 </motion.div>
                 <div>
-                  <motion.div
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={inView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.4, delay: 0.35 + i * 0.12 }}
-                    style={{ fontSize: 13, fontWeight: 500, color: 'var(--text-dark)', marginBottom: 3 }}
-                  >
+                  <div style={{ fontSize: 13, fontWeight: 500, color: 'var(--text-dark)', marginBottom: 3 }}>
                     {title}
-                  </motion.div>
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={inView ? { opacity: 1 } : {}}
-                    transition={{ duration: 0.4, delay: 0.42 + i * 0.12 }}
-                    style={{ fontSize: 12, color: 'var(--text-light)' }}
-                  >
+                  </div>
+                  <div style={{ fontSize: 12, color: 'var(--text-light)' }}>
                     {sub}
-                  </motion.div>
+                  </div>
                 </div>
-                {/* Animated side accent */}
-                <motion.div
-                  initial={{ scaleY: 0 }}
-                  animate={inView ? { scaleY: 1 } : {}}
-                  transition={{ duration: 0.4, delay: 0.38 + i * 0.12, ease }}
-                  style={{ position: 'absolute', left: 0, top: '20%', bottom: '20%', width: 3, background: 'var(--mint)', borderRadius: '0 2px 2px 0', transformOrigin: 'top' }}
-                />
               </motion.div>
             ))}
           </div>
